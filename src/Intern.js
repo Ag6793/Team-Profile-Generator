@@ -6,5 +6,9 @@ class Intern extends Employee {
         this.school = school;
     }
 
-    getRole()//overridden to return'Intern'
+    getRole() {
+        return 'Intern' //overridden to return'Intern'
+    }
 }
+
+module.exports = Intern;
