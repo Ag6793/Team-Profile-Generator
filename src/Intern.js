@@ -12,3 +12,5 @@ class Intern extends Employee {
 }
 
 module.exports = Intern;
+
+//Prompt will ask intern: name. ID. Email, School

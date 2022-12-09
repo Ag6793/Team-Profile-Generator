@@ -10,3 +10,5 @@ class Manager extends Employee {
         return 'Manager';//overridden to return'Manager'
     }
 }
+
+module.exports = Manager;

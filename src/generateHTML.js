@@ -10,6 +10,9 @@ function generateHTML(data) {
     </head>
     
     <body>
+        <div>
+        </div>
+
     <script src="index.js"></script>
     </body>
     
@@ -17,3 +20,5 @@ function generateHTML(data) {
 }
 
 module.exports = generateHTML;
+
+//for new fields use innerHTML?
