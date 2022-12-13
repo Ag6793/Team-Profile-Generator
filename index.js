@@ -1,27 +1,27 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateHTML = require('generateHTML');
+const generateHTML = require('./src/generateHTML');
 
 const generateHTML = [
-    console.log('Welcome to the team generator!'),
+    // console.log('Welcome to the team generator!'),
     {
         type: 'input',
-        name: 'managerName',
+        name: 'name',
         message: "What is the team manager's name?"
     },
     {
         type: 'input',
-        name: 'managerId',
+        name: 'id',
         message: "What is the team manager's id?"//input a number
     },
     {
         type: 'input',
-        name: 'managerEmail',
+        name: 'email',
         message: "What is the team manager's email?"
     },
     {
         type: 'input',
-        name: 'managerOfficeNumber',
+        name: 'officeNumber',
         message: "What is the team manager's office number?"//input a number
     },
     {
@@ -50,7 +50,9 @@ inquirer
     .catch((err) => console.log(err));
     
 }
+
 app();
+
 //Welcome to the team generator!
 //use'npm run reset' to reset the dist/folder
 //Please build your team:
