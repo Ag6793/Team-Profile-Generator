@@ -1,112 +1,58 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const { clear } = require('console');
+const questions = require('./src/questions')
 const generateHTML = require('./src/generateHTML');
-const engineer = require('./src/Engineer' );
-const employee = require('./src/Employee');
-const intern = require('./src/Intern');
-const manager = require('./src/Manager');
+const createEngineer = require('./src/Engineer' );
+const createIntern = require('./src/Intern');
+const Manager = require('./src/Manager');
+const teamMembers = []
 
-// const generateHTML = () =>
-inquirer
-    .prompt ([
-    console.log('Welcome to the team generator!'),
-    {
-        type: 'input',
-        name: 'name',
-        message: "What is the team manager's name?"
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: "What is the team manager's id?"//input a number
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: "What is the team manager's email?"
-    },
-    {
-        type: 'input',
-        name: 'officeNumber',
-        message: "What is the team manager's office number?"//input a number
-    },
-    {
-        type: 'input',
-        name: 'teamMember',
-        message: "Which type of team member would you like to add?",
-        choices: ['Engineer','Intern',"Finish building my team"]
-    }
-])
-.then(function(data) {
- 
-    
-})
+const menu = () =>
+    inquirer
+        .prompt(questions.menuPrompt)
+        .then(function ({ menuAction }) {
+            switch (menuAction) {
+                case 'Engineer':
+                    createEngineer()
+                    break;
+                case 'Intern':
+                    console.log("intern")
+                    break;
+                default:
+                    fs.writeFile('./dist/index.html', generateHTML(teamMembers), err=> console.log(err))
+                break;
+            }
+        })
 
-// const engineerRole = () =>
-inquirer
-    .prompt ([
-    {
-        type: 'input',
-        name: 'name',
-        message: "What is the Engineer's name?"
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: "What is the Engineer's id?"//input a number
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: "What is the Engineer's email?"
-    },
-    {
-        type: 'input',
-        name: 'github',
-        message: "What is the Engineer's Github?"//input a number
-    }
-])
-.then(function(data) {
+function createEngineer() {
+    inquirer
+        .prompt(questions.engineerPrompt)
+        .then(data => {
+            console.log(data)
 
-})
-
-// const internRole = () =>
-inquirer
-    .prompt([
-    {
-        type: 'input',
-        name: 'name',
-        message: "What is the Intern's name?"
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: "What is the Intern's id?"//input a number
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: "What is the Intern's email?"
-    },
-    {
-        type: 'input',
-        name: 'school',
-        message: "What school does the Intern attend?"//input a number
-    }
-])
-.then(function(data) {
-
-})
-
-/*async function callInquirers() {
-    const inq1 = await inquirer.prompt([...]);
-    const inq2 = await inquirer.prompt([...]);
-
-    // do stuff with results inq1 and inq2
-}*/
+            menu()
+        })
+}
 
 
-//input data to create an HTML
+
+const createIntern = () =>
+    inquirer
+        .prompt(questions.internPrompt)
+        .then(function (data) {
+            console.log(data)
+        })
+
+// async function callInquirers() {
+//     const inq1 = await inquirer.prompt([...]);
+//     const inq2 = await inquirer.prompt([...]);
+
+//     // do stuff with results inq1 and inq2
+// }
+
+
+// // input data to create an HTML
 // function writeToFile (name, data) {
 //     return fs.writeFileSync (name, data)
 // }
@@ -114,11 +60,11 @@ inquirer
 // function app() {
 
 // inquirer 
-//     .prompt(generateHTML, internRole, engineerRole) //calls different prompts?
-//     .then((data) => writeToFile('./dist/index.html', generateHTML(data))) //how to add other prompt arrays?
+//     .prompt(generateHTML) //calls different prompts?
+//     .then((data) => writeToFile('index-test.html', generateHTML(data))) //how to add other prompt arrays?
 //     .then (() => console.log('Successfully created index.html!'))
 //     .catch((err) => console.log(err));
-    
+
 // }
 
 // app();
@@ -140,3 +86,5 @@ inquirer
 //what is the team manager's office number?
 //Which type of team member would you like to add? (prompt to create engineer/intern/ or I don't want to add any more team members)
 //At the end the dist folder will be generated with 2 files. Style.css & team.html
+
+menu()

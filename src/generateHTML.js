@@ -1,48 +1,54 @@
-//Function if they select more or none team members
-function renderRole(teamMember) {
-    if (teamMember === 'Engineer') {
-        return engineerRole
-    } else if (teamMember === 'Intern') {
-        return internRole
-    } else {
-        return ''
-    } 
-}
+const Engineer = require("./Engineer")
+const Intern = require("./Intern")
+const Manager = require("./Manager")
 
+//Function will render an icon depending on which employee the user wants to add 
 function renderIcon(teamMember){
-    if (teamMember === 'Engineer') {
+    console.log("Generating icon")
+    console.log(teamMember)
+    if (teamMember.getRole() === 'Engineer') {
         return `<span class="material-symbols-outlined">engineering</span>`
-    } else if (teamMember === 'Intern') {
+    } else if (teamMember.getRole() === 'Intern') {
         return `<span class="material-symbols-outlined">school</span>`
     } 
     return '' 
 }
 
+//Function will add the school/github/officenumber to the added employee depending on their role
 function addInfo(teamMember) {
-    if (teamMember === 'Engineer') {
-        return `\n* ${this.github} \n`
-    }else if(data.role === 'Intern') {
-        return this.school
+    console.log("Generating add info")
+    console.log(teamMember)
+    if (teamMember.getRole() === 'Engineer') {
+        return `<p><a href='${teamMember.github}'>${teamMember.github}</a></p>`
+    }else if(teamMember.getRole() === 'Intern') {
+        return teamMember.school
     }
-    return '';
+    return `${teamMember.officeNumber}`;
 }
 
 
-
+//Function will create an html div depending on the user input
 function renderTeamMemberSection(teamMember){
-    if (teamMember !== "Finish building my team"){
-`<div class="team_member">
-    <p class="blue-header" id="name">${data.name}</p>
-    <p class="blue-header">${renderIcon(data.teamMember)}${data.teamMember}</p>
-    <p>ID: ${data.id}</p>
-    <p>Email: <a href="${data.email}">${data.email}</a></p>
-    <p>${addInfo(data.teamMember)}</p>
+    console.log("Generating section")
+    console.log(teamMember)
+return`<div class="team_member">
+    <p class="blue-header" id="name">${teamMember.name}</p>
+    <p class="blue-header">${renderIcon(teamMember)}${teamMember.getRole()}</p>
+    <p>ID: ${teamMember.id}</p>
+    <p>Email: <a href="${teamMember.email}">${teamMember.email}</a></p>
+    <p>${addInfo(teamMember)}</p>
 </div>` }
-    return ''
-}
+
 
 //A function to generate an html document from user input
 function generateHTML(data) {
+    console.log("Generating HTML")
+    // var data = [new Manager("Bill",1,"bill@email.com", 123), new Engineer("Bobby",3,"bobby@rocks.com","bobbySchmurda"), new Intern("asdf", 124,"asdlfkjasdf", "UT")]
+    // console.log(data[0])
+    var cards = ""
+    for(let i=0; i< data.length; i++){
+        cards += renderTeamMemberSection(data[i])
+    }
     return `<!DOCTYPE html>
     <html lang = "en-us">
     
@@ -58,15 +64,7 @@ function generateHTML(data) {
         <header><h1>My Team</h1></header>
 
         <section class = "main">
-            <div class="team_member">
-                <p class="blue-header" id="name">${data.name}</p>
-                <p class="blue-header"><span class="material-symbols-outlined">local_cafe</span> Manager</p>
-                <p>ID: ${data.id}</p>
-                <p>Email: <a href="${data.email}">${data.email}</a></p>
-                <p>${data.officeNumber}</p>
-            </div>
-
-            ${renderTeamMemberSection(data.teamMember)}
+           ${cards}
         </section>
 
     <script src="index.js"></script>
@@ -75,8 +73,6 @@ function generateHTML(data) {
     </html>`
 }
 
-module.exports = generateHTML;
+generateHTML()
 
-//for new fields use innerHTML?
-//Each entry create a div
-//Depending on the add team member determines the icon
+module.exports = generateHTML;

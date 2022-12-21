@@ -21,5 +21,6 @@ class Employee {
     return 'Employee'; //returns 'Employee'
 }}
 
+
 module.exports = Employee;
 
