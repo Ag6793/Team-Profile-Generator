@@ -1,48 +1,75 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { clear } = require('console');
-const questions = require('./src/questions')
-const generateHTML = require('./src/generateHTML');
-const createEngineer = require('./src/Engineer' );
-const createIntern = require('./src/Intern');
-const Manager = require('./src/Manager');
+// const { clear } = require('console'); //not sure what this is
+const questions = require('./src/questions');
+// const { menuPrompt } = require('./src/questions');
+// const generateHTML = require('./src/generateHTML');
+// const createEngineer = require('./src/Engineer' );
+// const createIntern = require('./src/Intern');
+// const Manager = require('./src/Manager');
 const teamMembers = []
 
 const menu = () =>
-    inquirer
+    console.log("menu is working");
+    inquirer //bug: when you first move arrow keys the prompt replicates
         .prompt(questions.menuPrompt)
-        .then(function ({ menuAction }) {
+        .then(function({menuAction}) {
             switch (menuAction) {
+                case 'Manager':
+                    console.log("manager is working");
+                    createManager()
+                    break;
                 case 'Engineer':
+                    console.log("engineer is working");
                     createEngineer()
                     break;
                 case 'Intern':
                     console.log("intern")
+                    createIntern()
                     break;
                 default:
                     fs.writeFile('./dist/index.html', generateHTML(teamMembers), err=> console.log(err))
                 break;
+
             }
         })
-
-function createEngineer() {
-    inquirer
+        
+        //function({menuAction})
+const createEngineer = () => {
+    console.log("engineer is working");
+     inquirer
         .prompt(questions.engineerPrompt)
         .then(data => {
             console.log(data)
+        
+             menu();
+         })
+ }
 
-            menu()
+const createIntern = () =>
+    inquirer
+        .prompt(questions.internPrompt)
+        .then(data => {
+            console.log(data)
+
+            menu();
+        })
+
+const createManager = ( ) => {
+    inquirer
+        .prompt(questions.managerPrompt)
+        .then(data => {
+            console.log(data);
+
+            menu();
         })
 }
 
 
 
-const createIntern = () =>
-    inquirer
-        .prompt(questions.internPrompt)
-        .then(function (data) {
-            console.log(data)
-        })
+
+
+
 
 // async function callInquirers() {
 //     const inq1 = await inquirer.prompt([...]);
@@ -69,22 +96,5 @@ const createIntern = () =>
 
 // app();
 
-
-//prompt to enter manager info
-//when entered info presented with a 
-//menu with 3 options: to add an engineer/ an intern/ or finish building my team
-//when i select engineer option, im prompted to enter their info and taken back to the menu
-//when i select intern, im prompted to enter their info, i'm then taken back to the menu
-//when i decide to finish building my team i exit the application and the html is generated
-
-//Welcome to the team generator!
-//use'npm run reset' to reset the dist/folder
-//Please build your team:
-//What is the team manager's name?
-//What is the team manager's id?
-//what is the team manager's email?
-//what is the team manager's office number?
-//Which type of team member would you like to add? (prompt to create engineer/intern/ or I don't want to add any more team members)
-//At the end the dist folder will be generated with 2 files. Style.css & team.html
 
 menu()
