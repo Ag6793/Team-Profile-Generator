@@ -3,7 +3,7 @@ const fs = require('fs');
 const questions = require('./src/questions');
 const generateHTML = require('./src/generateHTML');
 const Engineer = require('./src/Engineer' );
-// const createIntern = require('./src/Intern');
+const Intern = require('./src/Intern');
 // const Manager = require('./src/Manager');
 
 const teamMembers = []
@@ -46,9 +46,14 @@ const createIntern = () => {
     inquirer
         .prompt(questions.internPrompt)
         .then(data => {
-            console.log(data)
-
-            // menu();
+            const intern = new Intern(
+                data.name,
+                data.id,
+                data.email,
+                data.school
+            );
+            teamMembers.push(intern)
+            menu()
         })
 }
 
