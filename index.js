@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const questions = require('./src/questions');
 const generateHTML = require('./src/generateHTML');
-// const createEngineer = require('./src/Engineer' );
+const Engineer = require('./src/Engineer' );
 // const createIntern = require('./src/Intern');
 // const Manager = require('./src/Manager');
 
@@ -31,8 +31,13 @@ const createEngineer = () => {
     inquirer
         .prompt(questions.engineerPrompt)
         .then(data => {
-            console.log(data)
-            teamMembers.push(data)
+            const engineer = new Engineer(
+                data.name,
+                data.id,
+                data.email,
+                data.github
+            );
+            teamMembers.push(engineer)
             menu()
         })
 }
