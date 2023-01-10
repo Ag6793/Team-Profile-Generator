@@ -4,7 +4,7 @@ const questions = require('./src/questions');
 const generateHTML = require('./src/generateHTML');
 const Engineer = require('./src/Engineer' );
 const Intern = require('./src/Intern');
-// const Manager = require('./src/Manager');
+const Manager = require('./src/Manager');
 
 const teamMembers = []
 
@@ -62,11 +62,16 @@ const createManager = () => {
     inquirer
         .prompt(questions.managerPrompt)
         .then(data => {
-            console.log(data);
-
-            // menu();
+            const manager = new Manager(
+                data.name,
+                data.id,
+                data.email,
+                data.officeNumber
+            );
+            teamMembers.push(manager)
+            menu()
         })
 }
 
-menu()
+createManager();
 
