@@ -11,14 +11,10 @@ const teamMembers = []
 
 const menu = () =>
     console.log("menu is working");
-    inquirer //bug: when you first move arrow keys the prompt replicates
+    inquirer
         .prompt(questions.menuPrompt)
         .then(function({menuAction}) {
             switch (menuAction) {
-                case 'Manager':
-                    console.log("manager is working");
-                    createManager()
-                    break;
                 case 'Engineer':
                     console.log("engineer is working");
                     createEngineer()
@@ -41,9 +37,8 @@ const createEngineer = () => {
         .prompt(questions.engineerPrompt)
         .then(data => {
             console.log(data)
-        
-             menu();
          })
+//need a return to main menu , menu()
  }
 
 const createIntern = () =>
@@ -52,16 +47,17 @@ const createIntern = () =>
         .then(data => {
             console.log(data)
 
-            menu();
+            // menu();
         })
 
+//Need to have manager prompt appear before menu prompt
 const createManager = ( ) => {
     inquirer
         .prompt(questions.managerPrompt)
         .then(data => {
             console.log(data);
 
-            menu();
+            // menu();
         })
 }
 
@@ -94,7 +90,3 @@ const createManager = ( ) => {
 
 // }
 
-// app();
-
-
-menu()
