@@ -1,47 +1,43 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const { clear } = require('console'); //not sure what this is
 const questions = require('./src/questions');
-// const { menuPrompt } = require('./src/questions');
-// const generateHTML = require('./src/generateHTML');
+const generateHTML = require('./src/generateHTML');
 // const createEngineer = require('./src/Engineer' );
 // const createIntern = require('./src/Intern');
 // const Manager = require('./src/Manager');
+
 const teamMembers = []
 
-const menu = () =>
-    console.log("menu is working");
+const menu = () => {
     inquirer
         .prompt(questions.menuPrompt)
-        .then(function({menuAction}) {
+        .then(function ({ menuAction }) {
             switch (menuAction) {
                 case 'Engineer':
-                    console.log("engineer is working");
                     createEngineer()
                     break;
                 case 'Intern':
-                    console.log("intern")
                     createIntern()
                     break;
                 default:
-                    fs.writeFile('./dist/index.html', generateHTML(teamMembers), err=> console.log(err))
-                break;
+                    fs.writeFile('./dist/index.html', generateHTML(teamMembers), err => console.log(err))
+                    break;
 
             }
         })
-        
-        //function({menuAction})
+}
+
 const createEngineer = () => {
-    console.log("engineer is working");
-     inquirer
+    inquirer
         .prompt(questions.engineerPrompt)
         .then(data => {
             console.log(data)
-         })
-//need a return to main menu , menu()
- }
+            teamMembers.push(data)
+            menu()
+        })
+}
 
-const createIntern = () =>
+const createIntern = () => {
     inquirer
         .prompt(questions.internPrompt)
         .then(data => {
@@ -49,9 +45,10 @@ const createIntern = () =>
 
             // menu();
         })
+}
 
 //Need to have manager prompt appear before menu prompt
-const createManager = ( ) => {
+const createManager = () => {
     inquirer
         .prompt(questions.managerPrompt)
         .then(data => {
@@ -61,32 +58,5 @@ const createManager = ( ) => {
         })
 }
 
-
-
-
-
-
-
-// async function callInquirers() {
-//     const inq1 = await inquirer.prompt([...]);
-//     const inq2 = await inquirer.prompt([...]);
-
-//     // do stuff with results inq1 and inq2
-// }
-
-
-// // input data to create an HTML
-// function writeToFile (name, data) {
-//     return fs.writeFileSync (name, data)
-// }
-
-// function app() {
-
-// inquirer 
-//     .prompt(generateHTML) //calls different prompts?
-//     .then((data) => writeToFile('index-test.html', generateHTML(data))) //how to add other prompt arrays?
-//     .then (() => console.log('Successfully created index.html!'))
-//     .catch((err) => console.log(err));
-
-// }
+menu()
 

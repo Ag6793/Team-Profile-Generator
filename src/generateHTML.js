@@ -1,6 +1,8 @@
-const Engineer = require("./Engineer")
-const Intern = require("./Intern")
-const Manager = require("./Manager")
+const Engineer = require("./Engineer");
+const Intern = require("./Intern");
+const Manager = require("./Manager");
+
+
 
 //Function will render an icon image depending on which employee the user wants to add 
 function renderIcon(teamMember){
@@ -29,7 +31,7 @@ function addInfo(teamMember) {
 
 //Function will create an html div depending on the user input
 function renderTeamMemberSection(teamMember){
-    console.log("Generating section") 
+    console.log("Generating div section") 
     // console.log(teamMember)
 return`<div class="team_member">
     <p class="blue-header" id="name">${teamMember.name}</p>
@@ -43,9 +45,8 @@ return`<div class="team_member">
 //A function to generate an html document from user input
 function generateHTML(data) {
     console.log("Generating HTML")
-    // var data = [new Manager("Bill",1,"bill@email.com", 123), new Engineer("Bobby",3,"bobby@rocks.com","bobbySchmurda"), new Intern("asdf", 124,"asdlfkjasdf", "UT")]
-    // console.log(data[0])
-    var cards = ""
+    console.log(data);
+    var cards = ' ';
     for(let i=0; i< data.length; i++){
         cards += renderTeamMemberSection(data[i])
     }
@@ -72,10 +73,5 @@ function generateHTML(data) {
     
     </html>`
 }
-
-generateHTML()
-// renderIcon()
-// addInfo()
-// renderTeamMemberSection()
 
 module.exports = generateHTML;
