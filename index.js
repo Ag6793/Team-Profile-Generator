@@ -8,17 +8,21 @@ const Manager = require('./src/Manager');
 
 const teamMembers = []
 
+//Function to run after the user has inputed manager information. 
 const menu = () => {
     inquirer
         .prompt(questions.menuPrompt)
         .then(function ({ menuAction }) {
             switch (menuAction) {
+                //If the user selects to create a new Engineer, the engineer prompt questions will run
                 case 'Engineer':
                     createEngineer()
                     break;
+                //If the user selects to create a new Intern, the intern prompt questions will run
                 case 'Intern':
                     createIntern()
                     break;
+                //If the user selects "Finished building my team", this will generate the html from the user input
                 default:
                     fs.writeFile('./dist/index.html', generateHTML(teamMembers), err => console.log(err))
                     break;
@@ -27,6 +31,7 @@ const menu = () => {
         })
 }
 
+//Function to run engineer prompt questions when selected from the menu
 const createEngineer = () => {
     inquirer
         .prompt(questions.engineerPrompt)
@@ -42,6 +47,7 @@ const createEngineer = () => {
         })
 }
 
+//Function to run intern prompt questions when selected from the menu
 const createIntern = () => {
     inquirer
         .prompt(questions.internPrompt)
@@ -57,7 +63,7 @@ const createIntern = () => {
         })
 }
 
-//Need to have manager prompt appear before menu prompt
+//Function to initiate manager prompt questions to the user before the other prompts
 const createManager = () => {
     inquirer
         .prompt(questions.managerPrompt)
@@ -73,5 +79,6 @@ const createManager = () => {
         })
 }
 
+//Starts manager prompt
 createManager();
 

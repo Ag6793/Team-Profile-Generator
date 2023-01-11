@@ -1,3 +1,4 @@
+//Contains prompt to ask user
 const questions = {
     managerPrompt: [
         {
