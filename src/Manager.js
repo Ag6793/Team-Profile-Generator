@@ -12,3 +12,5 @@ class Manager extends Employee {
 }
 
 module.exports = Manager;
+
+//Prompt will ask for Manager's info

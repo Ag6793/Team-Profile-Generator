@@ -1,27 +1,9 @@
-//Add validation to ensure user input is in the proper format, like 'string'
 const Employee = require("../src/Employee");
-const { internPrompt } = require("../src/questions");
 
-describe ("Employee", () => {
-    describe("Initialization", () => {
+//Tests to make sure a new employee is returning as an Object
+test("Employee class is an object",()=>{
+    const sampleEmployee = new Employee ("John", 143, "John@email.com");
 
-        it(" ", () => {
-            
-        })
-
-    })
+    expect(typeof sampleEmployee).toBe("object")
 })
-// describe("Algo", () => {
-//   describe("reverse", () => {
-//     // 'reverse' should reverse "Hello World!"
-//     it("should reverse a given string", () => {
-//       // In order to test the function, we need to create a working example. First we define 'str'. 
-//       const str = "Hello World!";
-//       // Next we define 'reversed' as the value of 'str' reversed.
-//       const reversed = "!dlroW olleH";
-//       // We pass 'str' into '.reverse()' and set that value equal to result
-//       const result = new Algo().reverse(str);
-//       // We expect 'result' to equal 'reversed' if the 'reverse()' function is working correctly.
-//       expect(result).toEqual(reversed);
-//     });
-//   });
+

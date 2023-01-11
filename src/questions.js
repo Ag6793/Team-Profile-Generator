@@ -1,4 +1,4 @@
-//Contains prompt to ask user
+//Array of questions to create prompts
 const questions = {
     managerPrompt: [
         {
@@ -9,7 +9,7 @@ const questions = {
         {
             type: 'input',
             name: 'id',
-            message: "What is the team manager's id?"//input a number
+            message: "What is the team manager's id?"
         },
         {
             type: 'input',
@@ -19,9 +19,10 @@ const questions = {
         {
             type: 'input',
             name: 'officeNumber',
-            message: "What is the team manager's office number?"//input a number
+            message: "What is the team manager's office number?"
         },
     ],
+    //The menu prompt to determine which employee to create
     menuPrompt: [
         {
             type: 'list',
@@ -39,7 +40,7 @@ const questions = {
         {
             type: 'input',
             name: 'id',
-            message: "What is the Engineer's id?"//input a number
+            message: "What is the Engineer's id?"
         },
         {
             type: 'input',
@@ -49,7 +50,7 @@ const questions = {
         {
             type: 'input',
             name: 'github',
-            message: "What is the Engineer's Github?"//input a number
+            message: "What is the Engineer's Github?"
         }
     ],
     internPrompt: [
@@ -61,7 +62,7 @@ const questions = {
         {
             type: 'input',
             name: 'id',
-            message: "What is the Intern's id?"//input a number
+            message: "What is the Intern's id?"
         },
         {
             type: 'input',
@@ -71,7 +72,7 @@ const questions = {
         {
             type: 'input',
             name: 'school',
-            message: "What school does the Intern attend?"//input a number
+            message: "What school does the Intern attend?"
         }
     ]
 }

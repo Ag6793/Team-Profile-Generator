@@ -36,6 +36,7 @@ const createEngineer = () => {
     inquirer
         .prompt(questions.engineerPrompt)
         .then(data => {
+            //From inputed data, this will create a new engineer
             const engineer = new Engineer(
                 data.name,
                 data.id,
@@ -52,6 +53,7 @@ const createIntern = () => {
     inquirer
         .prompt(questions.internPrompt)
         .then(data => {
+            //From inputed data, this will create a new intern
             const intern = new Intern(
                 data.name,
                 data.id,
@@ -68,6 +70,7 @@ const createManager = () => {
     inquirer
         .prompt(questions.managerPrompt)
         .then(data => {
+            //From inputed data, this will create a new manager
             const manager = new Manager(
                 data.name,
                 data.id,
@@ -75,6 +78,8 @@ const createManager = () => {
                 data.officeNumber
             );
             teamMembers.push(manager)
+            
+            //This will start the menu prompt
             menu()
         })
 }
