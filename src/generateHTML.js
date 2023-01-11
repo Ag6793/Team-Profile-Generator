@@ -21,11 +21,11 @@ function addInfo(teamMember) {
     console.log("Generating add info")
     // console.log(teamMember)
     if (teamMember.getRole() === 'Engineer') {
-        return `<p><a href='${teamMember.github}'>${teamMember.github}</a></p>`
+        return `GitHub: <a href='https://github.com/${teamMember.github}'> ${teamMember.github}</a>`
     }else if(teamMember.getRole() === 'Intern') {
-        return teamMember.school
+        return `School: ${teamMember.school}`
     }
-    return `${teamMember.officeNumber}`;
+    return `Office Number: ${teamMember.officeNumber}`;
 }
 
 
@@ -38,7 +38,7 @@ return`
     <p class="blue-header" id="name">${teamMember.name}</p>
     <p class="blue-header">${renderIcon(teamMember)}${teamMember.getRole()}</p>
     <p>ID: ${teamMember.id}</p>
-    <p>Email: <a href="${teamMember.email}">${teamMember.email}</a></p>
+    <p>Email: <a href="mailto:${teamMember.email}">${teamMember.email}</a></p>
     <p>${addInfo(teamMember)}</p>
 </div>
 ` }
