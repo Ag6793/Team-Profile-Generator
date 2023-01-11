@@ -17,6 +17,11 @@ header {
 .main {
     margin-left: 150px;
     margin-right: 150px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Styling for symbols */
@@ -41,7 +46,7 @@ h1{
 .team_member {
     background-color: rgb(247, 243, 243);
     width: 12rem;
-    margin: auto;
+    margin: 1.5rem;
     height: 15rem;
     text-align: left;
     font-size: 15px;
@@ -67,11 +72,17 @@ p {
     padding-bottom: 0px;
 }
 
+/*======================================================================================================================*/
+
 /* Media Query for responsiveness */
-@media screen and (max-width: 450px) {
+/* @media screen and (max-width: 500px) {
     header {
         height: 250px;
         margin-bottom: 14rem;    
+    }
+
+    .main{
+        flex-direction: column;
     }
 
     h1{
@@ -99,8 +110,8 @@ p {
     }
 
     /*Symbol resizing */
-    .material-symbols-outlined {
+    /*.material-symbols-outlined {
         font-size: 45px !important;
     }
 
-}
+} */

@@ -33,13 +33,15 @@ function addInfo(teamMember) {
 function renderTeamMemberSection(teamMember){
     console.log("Generating div section") 
     // console.log(teamMember)
-return`<div class="team_member">
+return`
+<div class="team_member">
     <p class="blue-header" id="name">${teamMember.name}</p>
     <p class="blue-header">${renderIcon(teamMember)}${teamMember.getRole()}</p>
     <p>ID: ${teamMember.id}</p>
     <p>Email: <a href="${teamMember.email}">${teamMember.email}</a></p>
     <p>${addInfo(teamMember)}</p>
-</div>` }
+</div>
+` }
 
 
 //A function to generate an html document from user input
