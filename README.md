@@ -7,7 +7,7 @@
 
 ## Description
 This application will accept user input from the prompts provided and it will create an employee database.
-Deployed application: https://ag6793.github.io/Team-Profile-Generator/
+
 
 ![Screenshot_of_Team_Profile_Generator](./assets/Images/Generator-homepage.jpg)
 
