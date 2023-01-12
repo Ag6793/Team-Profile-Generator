@@ -6,20 +6,19 @@ const Manager = require("./Manager");
 
 //Function will render an icon image depending on which employee the user wants to add 
 function renderIcon(teamMember){
-    console.log("Generating icon")
-    console.log(teamMember)
     if (teamMember.getRole() === 'Engineer') {
-        return `<span class="material-symbols-outlined">engineering</span>` //icon for engineer
+        //icon for engineer
+        return `<span class="material-symbols-outlined">engineering</span>` 
     } else if (teamMember.getRole() === 'Intern') {
-        return `<span class="material-symbols-outlined">school</span>` //icon for intern
+        //icon for intern
+        return `<span class="material-symbols-outlined">school</span>` 
     } 
-    return '<span class="material-symbols-outlined">local_cafe</span>' //icon for manager
+    //icon for manager
+    return '<span class="material-symbols-outlined">local_cafe</span>' 
 }
 
 //Function will add the school/github/officenumber to the added employee depending on their role
 function addInfo(teamMember) {
-    console.log("Generating add info")
-    // console.log(teamMember)
     if (teamMember.getRole() === 'Engineer') {
         return `GitHub: <a href='https://github.com/${teamMember.github}'> ${teamMember.github}</a>`
     }else if(teamMember.getRole() === 'Intern') {
@@ -31,8 +30,6 @@ function addInfo(teamMember) {
 
 //Function will create an html div depending on the user input
 function renderTeamMemberSection(teamMember){
-    console.log("Generating div section") 
-    // console.log(teamMember)
 return`
 <div class="team_member">
     <p class="blue-header" id="name">${teamMember.name}</p>
@@ -46,8 +43,6 @@ return`
 
 //A function to generate an html document from user input
 function generateHTML(data) {
-    console.log("Generating HTML")
-    console.log(data);
     var cards = ' ';
     for(let i=0; i< data.length; i++){
         cards += renderTeamMemberSection(data[i])

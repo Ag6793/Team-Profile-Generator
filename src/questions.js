@@ -1,5 +1,6 @@
 //Array of questions to create prompts
 const questions = {
+     //Contains prompt questions to create an manager
     managerPrompt: [
         {
             type: 'input',
@@ -31,6 +32,7 @@ const questions = {
             choices: ['Engineer','Intern',"Finish building my team"]
         }
     ],
+    //Contains prompt questions to create an engineer
     engineerPrompt: [
         {
             type: 'input',
@@ -53,6 +55,7 @@ const questions = {
             message: "What is the Engineer's Github?"
         }
     ],
+    //Contains prompt questions to create an intern
     internPrompt: [
         {
             type: 'input',
