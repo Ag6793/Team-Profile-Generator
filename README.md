@@ -15,6 +15,8 @@ This application will accept user input from the prompts provided and it will cr
 * HTML 
 * CSS 
 * Javascript
+* NPM Inquirer
+* Jest
 
 ## Installation
 Clone the repository and install inquirer to run the program. Open the command-line and type "Node index.js" to start prompts. Answer the prompts and when you've completed answering the prompts a HTML document will generate with the inputed data.
