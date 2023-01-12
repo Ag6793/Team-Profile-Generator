@@ -22,7 +22,7 @@ Clone the repository and install inquirer to run the program. Open the command-l
 This application will be useful for department usage, to collect employee data.
 
 ## Credits
-Alexandria Guerrero, Ag6793
+Alexandria Guerrero, https://github.com/Ag6793
 
 ## License
 
